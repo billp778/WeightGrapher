@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weight Grapher</title>
+        <link rel="stylesheet" href="styles.css"/>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            //google.charts.setOnLoadCallback(drawChart());
+        </script>
+
+    </head>
+
+    <body onload="getData()">
+        <div class="sidebar">
+            <h1>Weight Loss Graph</h1>
+            <nav>
+
+                <ul>
+                    <label for="todaysWeight">Enter weight:</label><br><br>
+                    <input type="text" id="weight" name="curWeight"><br><br>
+                    <input type="date" onchange="checkDate()" required class="date-input" id="date" name="curDate"
+                            value="">
+                    <input onclick="addWeight(); getData()" type="submit" value="Submit">
+                </ul>
+            </nav>
+            <!-- aside inside sidebar -->
+            <aside>
+                <h1>Check Past</h1>
+                <ul>
+                    <li onclick="sortArr(); getWeek(); drawChart()" id="week"><a href="#">Week</a></li>
+                    <li onclick="sortArr(); getMonth(); drawChart();" id="month"><a href="#">Month</a></li>
+                    <li onclick="sortArr(); getYear(); drawChart()" id="year"><a href="#">Year</a></li>
+                    <li onclick="sortArr(); getTotal(); drawChart()" id="total"><a href="#">Total</a></li>
+                </ul>
+            </aside>
+        </div><!-- /sidebar -->
+
+        <div id="curve_chart" style="width: 900px; height: 500px"></div>
+      
+        <script src="app.js"></script>
+
+    </body>
+</html>
